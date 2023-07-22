@@ -1,0 +1,49 @@
+.header {
+  height: 12.5rem;
+  background-color: var(--gray700);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.formNewTask {
+  position: absolute;
+  bottom: -1.68rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.formInput {
+  width: 39.875rem;
+  height: 3.375rem;
+  padding: 1rem;
+  border: 1px solid var(--gray700);
+  background-color: var(--gray500);
+  border-radius: 0.5rem;
+  color: var(--gray100);
+  outline: none;
+}
+.formInput:focus {
+  border-color: var(--purpleDark);
+}
+
+.formButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 5.625rem;
+  height: 3.25rem;
+  border-radius: 0.5rem;
+  background-color: var(--blueDark);
+  color: var(--gray100);
+  cursor: pointer;
+}
+
+.formButton:hover {
+  background-color: var(--blue);
+}
