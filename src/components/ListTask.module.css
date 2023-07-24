@@ -5,12 +5,13 @@
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
+  width: 46rem;
 }
 
 .header {
   font-weight: 700;
   color: var(--blue);
-  width: 46rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }

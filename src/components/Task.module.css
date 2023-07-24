@@ -1,0 +1,54 @@
+.task {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: flex-start;
+  background-color: var(--gray400);
+  padding: 1rem;
+  color: var(--gray100);
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.task button {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--purpleDark);
+}
+
+.task button > div {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid var(--blue);
+  border-radius: 50%;
+}
+
+.task button > svg:hover {
+  color: var(--purple);
+}
+
+.task button > div:hover {
+  border-color: var(--blueDark);
+}
+
+.task p {
+  flex: 1;
+  text-align: left;
+}
+
+.task p + button svg {
+  color: var(--gray300);
+}
+
+.task p + button svg:hover {
+  color: var(--danger);
+}
+
+.completed {
+  text-decoration: line-through;
+  color: var(--gray300);
+}

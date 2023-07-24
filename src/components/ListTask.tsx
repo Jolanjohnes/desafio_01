@@ -1,22 +1,42 @@
 import style from './ListTask.module.css'
 import ListEmpty from './../assets/ListEmpty.svg'
-export function ListTask() {
+import { Task } from './Task'
+import { Itask } from '../App'
+
+interface listProps {
+  tasks: Itask[]
+  deleteTask: (description: string) => void
+}
+
+export function ListTask({ tasks, deleteTask }: listProps) {
+  const taskCompleted = tasks.filter(task => {
+    return task.completed == true
+  })
+
   return (
     <div className={style.listTask}>
       <header className={style.header}>
         <p>
-          Tarefas Criadas <span>0</span>
+          Tarefas Criadas <span>{tasks.length}</span>
         </p>
         <p>
-          Concluidas <span>0</span>
+          Concluídas <span>{`${taskCompleted.length} de ${tasks.length}`}</span>
         </p>
       </header>
 
-      <div className={style.details}>
-        <img src={ListEmpty} alt="imagem de lista de tarefas" />
-        <strong>Você ainda não tem tarefas cadastradas</strong>
-        <p> Crie tarefas e organize seus itens a fazer</p>
-      </div>
+      {tasks.length <= 0 ? (
+        <div className={style.details}>
+          <img src={ListEmpty} alt="imagem de lista de tarefas" />
+          <strong>Você ainda não tem tarefas cadastradas</strong>
+          <p> Crie tarefas e organize seus itens a fazer</p>
+        </div>
+      ) : (
+        tasks.map(task => {
+          return (
+            <Task task={task} key={task.description} deleteTask={deleteTask} />
+          )
+        })
+      )}
     </div>
   )
 }
