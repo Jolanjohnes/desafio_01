@@ -13,22 +13,36 @@ export interface Itask {
 function App() {
   const [tasks, setTasks] = useState<Itask[]>([])
 
-  function addNewTask(description: string): void {
+  function onAddNewTask(description: string): void {
     setTasks([...tasks, { description, completed: false }])
-    console.log(tasks)
   }
 
-  function deleteTask(description: string): void {
+  function onDeleteTask(description: string): void {
     const newListTask = tasks.filter(task => {
       return task.description !== description
     })
     setTasks(newListTask)
   }
 
+  function onCompletedTask(description: string) {
+    const newListTask = tasks.map(task => {
+      if (task.description === description) {
+        return { ...task, completed: !task.completed }
+      }
+      return task
+    })
+
+    setTasks(newListTask)
+  }
+
   return (
     <div className={style.app}>
-      <Header addNewTask={addNewTask} />
-      <ListTask tasks={tasks} deleteTask={deleteTask} />
+      <Header addNewTask={onAddNewTask} />
+      <ListTask
+        tasks={tasks}
+        onDeleteTask={onDeleteTask}
+        onCompletedTask={onCompletedTask}
+      />
     </div>
   )
 }

@@ -5,13 +5,18 @@ import { Itask } from '../App'
 
 interface TaskProps {
   task: Itask
-  deleteTask: (description: string) => void
+  onDeleteTask: (description: string) => void
+  onCompletedTask: (description: string) => void
 }
 
-export function Task({ task, deleteTask }: TaskProps) {
+export function Task({ task, onDeleteTask, onCompletedTask }: TaskProps) {
   return (
     <div className={style.task}>
-      <button>
+      <button
+        onClick={() => {
+          onCompletedTask(task.description)
+        }}
+      >
         {task.completed == false ? (
           <div />
         ) : (
@@ -23,7 +28,7 @@ export function Task({ task, deleteTask }: TaskProps) {
         {task.description}
       </p>
 
-      <button onClick={() => deleteTask(task.description)}>
+      <button onClick={() => onDeleteTask(task.description)}>
         <GoTrash size={24} />
       </button>
     </div>

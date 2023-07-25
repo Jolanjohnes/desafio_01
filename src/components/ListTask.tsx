@@ -5,10 +5,11 @@ import { Itask } from '../App'
 
 interface listProps {
   tasks: Itask[]
-  deleteTask: (description: string) => void
+  onDeleteTask: (description: string) => void
+  onCompletedTask: (description: string) => void
 }
 
-export function ListTask({ tasks, deleteTask }: listProps) {
+export function ListTask({ tasks, onDeleteTask, onCompletedTask }: listProps) {
   const taskCompleted = tasks.filter(task => {
     return task.completed == true
   })
@@ -19,9 +20,16 @@ export function ListTask({ tasks, deleteTask }: listProps) {
         <p>
           Tarefas Criadas <span>{tasks.length}</span>
         </p>
-        <p>
-          Concluídas <span>{`${taskCompleted.length} de ${tasks.length}`}</span>
-        </p>
+        {tasks.length > 0 ? (
+          <p>
+            Concluídas{' '}
+            <span>{`${taskCompleted.length} de ${tasks.length}`}</span>
+          </p>
+        ) : (
+          <p>
+            Concluídas <span>0</span>
+          </p>
+        )}
       </header>
 
       {tasks.length <= 0 ? (
@@ -33,7 +41,12 @@ export function ListTask({ tasks, deleteTask }: listProps) {
       ) : (
         tasks.map(task => {
           return (
-            <Task task={task} key={task.description} deleteTask={deleteTask} />
+            <Task
+              task={task}
+              key={task.description}
+              onDeleteTask={onDeleteTask}
+              onCompletedTask={onCompletedTask}
+            />
           )
         })
       )}

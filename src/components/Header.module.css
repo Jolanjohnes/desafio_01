@@ -10,6 +10,7 @@
 }
 
 .formNewTask {
+  width: 46rem;
   position: absolute;
   bottom: -1.68rem;
   display: flex;
@@ -19,7 +20,7 @@
 }
 
 .formInput {
-  width: 39.875rem;
+  flex: 1;
   height: 3.375rem;
   padding: 1rem;
   border: 1px solid var(--gray700);
